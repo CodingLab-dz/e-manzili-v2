@@ -27,7 +27,6 @@ export default function EManziliConcept() {
       <Marketingsection />
 
       {/* FOOTER */}
-      <Footer />
     </div>
   )
 }

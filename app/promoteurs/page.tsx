@@ -101,12 +101,6 @@ const colorMap: Record<
         border: "border-amber-500/20",
         dot: "bg-amber-400",
     },
-    cyan: {
-        bg: "bg-cyan-500/10",
-        text: "text-cyan-400",
-        border: "border-cyan-500/20",
-        dot: "bg-cyan-400",
-    },
 };
 
 const pillars = [

@@ -1,16 +1,31 @@
 'use client'
 
-import React, { useState, Suspense } from "react"
+import React, { Suspense } from "react"
 import Link from "next/link";
 import imagebanner from '@/images/imagebanner.jpeg';
 
 const BannerCom = () => {
     return (
-        <section className="relative px-8 lg:px-20 py-20 overflow-hidden">
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-3xl rounded-full"></div>
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 blur-3xl rounded-full"></div>
+        <section className="relative px-8 lg:px-20 py-20 overflow-hidden min-h-screen flex items-center">
+            
+            {/* Background image */}
+            <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${imagebanner.src})` }}
+            />
 
-            <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
+            
+            {/* Optional top/bottom fades for polish */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+
+            {/* Ambient glow blobs (kept from original) */}
+            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-3xl rounded-full" />
+            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 blur-3xl rounded-full" />
+
+            {/* Content */}
+            <div className="relative z-10 w-full flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 {/* text side */}
                 <div className="w-full">
                     <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm mb-8">
@@ -68,6 +83,7 @@ const BannerCom = () => {
                         </div>
                     </div>
                 </div>
+
                 {/* stat side */}
                 <div className="w-full">
                     <div className="bg-white/5 border border-white/10 rounded-[32px] p-5 sm:p-8 backdrop-blur-xl shadow-[0_0_80px_rgba(0,255,255,0.08)]">
@@ -77,19 +93,16 @@ const BannerCom = () => {
                                 <div className="text-2xl font-bold mb-1">Closing</div>
                                 <p className="text-gray-400 text-xs">Méthodes avancées de vente immobilière.</p>
                             </div>
-
                             <div className="bg-black/30 border border-white/5 rounded-2xl p-5">
                                 <div className="text-cyan-400 text-xs mb-2">COMMUNICATION</div>
                                 <div className="text-2xl font-bold mb-1">Confiance</div>
                                 <p className="text-gray-400 text-xs">Développer une communication impactante.</p>
                             </div>
-
                             <div className="bg-black/30 border border-white/5 rounded-2xl p-5 lg:col-span-2">
                                 <div className="flex items-center justify-between mb-4">
                                     <span className="text-base font-semibold">Marketing Immobilier Avancé</span>
                                     <span className="text-cyan-400 text-xs">STRATEGY</span>
                                 </div>
-
                                 <div className="space-y-4">
                                     <div>
                                         <div className="flex justify-between text-sm mb-2">
@@ -100,7 +113,6 @@ const BannerCom = () => {
                                             <div className="bg-cyan-400 h-full w-[92%]"></div>
                                         </div>
                                     </div>
-
                                     <div>
                                         <div className="flex justify-between text-sm mb-2">
                                             <span className="text-gray-300">Visites virtuelles</span>
@@ -120,9 +132,6 @@ const BannerCom = () => {
     );
 }
 
-export default function Banner() {
-
-    return <Suspense>
-        <BannerCom />
-    </Suspense>
+export default function Banner2() {
+    return <Suspense><BannerCom /></Suspense>
 }

@@ -3,28 +3,27 @@
 import React, { useState, Suspense } from "react"
 import Link from "next/link";
 import Contact from "./contact";
+import Image from 'next/image'
+import logo from '@/images/logo/logo.png'
 
-const FooterCom = ({contactRef} : {contactRef : React.RefObject<HTMLDivElement> }) => {
+const FooterCom = ({ contactRef }: { contactRef: React.RefObject<HTMLDivElement> }) => {
     return (
         <footer id="contact" className="bg-[#07111F] border-t border-white/10 px-8 lg:px-20 py-10 text-gray-500 flex flex-col lg:flex-row justify-between gap-6">
-            <div>
+            <div className="max-w-82.5">
                 <div className="logo w-fit">
-                    <Link href="/" className="flex flex-col gap-1">
-                        <h1 className="lg:text-2xl font-bold tracking-[0.2em]">
-                            <span className="text-cyan-400">E</span>-MANZILI
-                        </h1>
-                        <div className="flex flex-col gap-0.5">
-                            <div className="w-[80%] lg:w-full h-px bg-cyan-400" />
-                            <span className="text-[9px] tracking-[0.25em] text-cyan-400 uppercase">
-                                Performance Immobilière
-                            </span>
-                        </div>
+                    <Link href="/">
+                        <Image
+                            src={logo}
+                            alt="E-Manzili Logo"
+                            height={48}
+                            className="h-10 lg:h-12 w-auto object-contain"
+                        />
                     </Link>
                 </div>
-                <p className="text-[15px] text-gray-500 leading-relaxed mt-8 mb-5 max-w-87.5">
-                    E-Manzili accompagne les promoteurs immobiliers avec des stratégies commerciales avancées, du marketing digital, des formations terrain et une plateforme e-learning dédiée aux commerciaux.
-                </p>
-                © 2026 E-MANZILI — Performance Commerciale Immobilière
+                <h1><span className="font-bold">Tel: </span></h1>
+                <h1><span className="font-bold">E-mail: </span></h1>
+                <h1>24/7  / chaque communication electronique recoit une reponse dans les 24 heures
+                    © 2026 E-MANZILI — Performance Commerciale Immobilière</h1>
             </div>
 
             <div className="flex flex-col gap-6">
@@ -57,9 +56,9 @@ const FooterCom = ({contactRef} : {contactRef : React.RefObject<HTMLDivElement> 
     );
 }
 
-export default function Footer({contactref} : {contactref : React.RefObject<HTMLDivElement> }) {
+export default function Footer({ contactref }: { contactref: React.RefObject<HTMLDivElement> }) {
 
     return <Suspense>
-        <FooterCom contactRef={contactref}/>
+        <FooterCom contactRef={contactref} />
     </Suspense>
 }

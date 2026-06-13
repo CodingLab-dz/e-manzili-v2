@@ -3,6 +3,8 @@
 
 
 import Banner from "@/components/banner";
+import Banner2 from "@/components/banner2";
+import ContactSection from "@/components/contactsection";
 import Espace from "@/components/espacesection";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
@@ -16,7 +18,8 @@ export default function EManziliConcept() {
       {/* NAVBAR */}
 
       {/* HERO */}
-      <Banner />
+      {/* <Banner /> */}
+      <Banner2 />
 
       {/* DUAL SPACE */}
       <Espace />

@@ -44,6 +44,7 @@ const ContactCom = () => {
             </div>
 
             <Field label="Adresse e-mail" icon="ti-mail" type="email" placeholder="vous@exemple.com" />
+            <Field label="N° téléphone" icon="ti-phone" type="tel" placeholder="+213 6XX XXX XXX" />
             <Field
                 label="Message"
                 icon="ti-message"

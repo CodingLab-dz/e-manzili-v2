@@ -1,19 +1,27 @@
 'use client'
 
 import React, { useState, Suspense } from "react"
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from 'next/image'
 import logo from '@/images/logo/logo.png'
-import logo2 from '@/images/logo/logo2.png'
 
-const HeaderCom = ({clickref}: {clickref: () => void}) => {
+const HeaderCom = ({ clickref }: { clickref: () => void }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
+
+    const links = [
+        { href: "/promoteurs", label: "Promoteurs" },
+        { href: "/academy", label: "Academy" },
+        { href: "/elearning", label: "E-learning" },
+        { href: "/marketing", label: "Marketing" },
+    ];
 
     return (
         <nav className="sticky top-0 z-50 backdrop-blur-xl border-b border-white/10 bg-[#07111F]/80 px-8 lg:px-20 py-3 flex items-center justify-between ">
-            <div className="logo w-fit">
+            {/* <div className="logo w-fit">
                 <Link href="/" className="flex flex-col gap-1">
-                    <h1 className="lg:text-2xl font-bold tracking-[0.2em]">
+                    <h1 className="lg:text-2xl font-bold tracking-[0.2em] text-white">
                         <span className="text-cyan-400">E</span>-MANZILI
                     </h1>
                     <div className="flex flex-col gap-0.5">
@@ -22,6 +30,16 @@ const HeaderCom = ({clickref}: {clickref: () => void}) => {
                             Performance Immobilière
                         </span>
                     </div>
+                </Link>
+            </div> */}
+            <div className="logo w-fit">
+                <Link href="/">
+                    <Image
+                        src={logo}
+                        alt="E-Manzili Logo"
+                        height={48}
+                        className="h-10 lg:h-12 w-auto object-contain"
+                    />
                 </Link>
             </div>
 
@@ -38,22 +56,20 @@ const HeaderCom = ({clickref}: {clickref: () => void}) => {
             </div>
 
             <div className="hidden lg:flex items-center gap-8 text-gray-300">
-                <Link href="/promoteurs" className="relative group">
-                    Promoteurs
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-                <Link href="/academy" className="relative group">
-                    Academy
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-                <Link href="/elearning" className="relative group">
-                    E-learning
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-                <Link href="/marketing" className="relative group">
-                    Marketing
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
+                {links.map(({ href, label }) => {
+                    const isActive = pathname === href;
+                    return (
+                        <Link key={href} href={href} className="relative group">
+                            <span className={isActive ? "text-white" : ""}>
+                                {label}
+                            </span>
+                            <span
+                                className={`absolute -bottom-1 left-0 h-0.5 bg-cyan-400 transition-all duration-300
+            ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
+                            />
+                        </Link>
+                    );
+                })}
                 <Link href="#" onClick={clickref} className="relative group">
                     Contact
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
@@ -81,9 +97,9 @@ const HeaderCom = ({clickref}: {clickref: () => void}) => {
     );
 }
 
-export default function Header({clickRef} : {clickRef: ()=> void}) {
+export default function Header({ clickRef }: { clickRef: () => void }) {
 
     return <Suspense>
-        <HeaderCom clickref={clickRef}/>
+        <HeaderCom clickref={clickRef} />
     </Suspense>
 }

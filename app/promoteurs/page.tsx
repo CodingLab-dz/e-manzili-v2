@@ -8,6 +8,7 @@ import PeopleIcon from "@/components/icons/peapoleicon";
 import SearchIconScan from "@/components/icons/searchiconscan";
 import React, { useState, Suspense, useRef } from "react"
 import heroimage from "@/images/propoteurbanner.webp"
+import Image from "next/image";
 
 
 
@@ -131,10 +132,18 @@ const PromoteursCom = () => {
             <section className="min-h-screen bg-[#07111F]  ">
                 {/* ── Hero ── */}
                 <div className="relative overflow-hidden min-h-screen flex items-center px-6 sm:px-10 lg:px-20 pt-24" data-aos="fade-up" data-aos-duration="1500">
-                    <div
+                    {/* <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                         style={{ backgroundImage: `url(${heroimage.src})` }}
-                    />
+                    /> */}
+                    <Image
+        src={heroimage}
+        alt="Marketing immobilier"
+        fill
+        priority
+        quality={90}
+        className="object-cover"
+    />
                     {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
                     {/* Ambient glow blobs (kept from original) */}

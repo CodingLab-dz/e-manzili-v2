@@ -8,6 +8,8 @@ import TrophyIcon from "@/components/icons/trophyicon";
 import VideoIcon from "@/components/icons/videoicon";
 import React, { useState, Suspense, useRef } from "react"
 import bannerimg from '@/images/marketingbanner.webp'
+import Image from "next/image";
+
 
 const solutions = [
     {
@@ -126,11 +128,20 @@ const MarketingCom = () => {
 
                 {/* ── Hero ── */}
                 <div className="relative overflow-hidden min-h-screen flex items-center px-6 sm:px-10 lg:px-20 pt-24" data-aos="fade-up" data-aos-duration="1500">
-                     <div
+                     {/* <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: `url(${bannerimg.src})` }}
 
-                />
+                /> */}
+
+                    <Image
+        src={bannerimg}
+        alt="Marketing immobilier"
+        fill
+        priority
+        quality={90}
+        className="object-cover"
+    />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
                 {/* Ambient glow blobs (kept from original) */}

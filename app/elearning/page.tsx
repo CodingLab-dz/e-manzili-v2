@@ -13,7 +13,8 @@ import MicIcon from "@/components/icons/micicon";
 import NegociationIcon from "@/components/icons/negociationicon";
 import PersonalizedPathIcon from "@/components/icons/personalizedpathicon";
 import SproutIcon from "@/components/icons/sprouticon";
-import bannerimg from "@/images/elearningbanner.webp"
+import bannerimg from "@/images/elearningbanner.webp";
+import Image from "next/image";
 
 import React, { useState, Suspense, useRef } from "react"
 
@@ -102,10 +103,18 @@ const ElearningCom = () => {
             <section className="min-h-screen bg-[#07111F]">
                 {/* ── Hero ── */}
                 <div className="relative overflow-hidden min-h-screen flex items-center px-6 sm:px-10 lg:px-20 pt-24" data-aos="fade-up" data-aos-duration="1500">
-                    <div
+                    {/* <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                         style={{ backgroundImage: `url(${bannerimg.src})` }}
-                    />
+                    /> */}
+                    <Image
+        src={bannerimg}
+        alt="Marketing immobilier"
+        fill
+        priority
+        quality={90}
+        className="object-cover"
+    />
                     {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
                     {/* Ambient glow blobs (kept from original) */}

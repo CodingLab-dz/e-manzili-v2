@@ -13,7 +13,7 @@ import MicIcon from "@/components/icons/micicon";
 import NegociationIcon from "@/components/icons/negociationicon";
 import PersonalizedPathIcon from "@/components/icons/personalizedpathicon";
 import SproutIcon from "@/components/icons/sprouticon";
-import bannerimg from "@/images/elearningbanner.jpg"
+import bannerimg from "@/images/elearningbanner.webp"
 
 import React, { useState, Suspense, useRef } from "react"
 

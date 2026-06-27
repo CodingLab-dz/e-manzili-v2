@@ -7,7 +7,7 @@ import SettingsIcon from "@/components/icons/settingsicon";
 import TrophyIcon from "@/components/icons/trophyicon";
 import VideoIcon from "@/components/icons/videoicon";
 import React, { useState, Suspense, useRef } from "react"
-import bannerimg from '@/images/marketingbanner.png'
+import bannerimg from '@/images/marketingbanner.webp'
 
 const solutions = [
     {

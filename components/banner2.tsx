@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, Suspense } from "react"
 import Link from "next/link";
-import imagebanner from '@/images/imagebanner.jpeg';
+import imagebanner from '@/images/imagebanner.webp';
 
 const AnimatedStat = ({ target, suffix = "", label }: { target: number; suffix?: string; label: string }) => {
     const [count, setCount] = useState(0);

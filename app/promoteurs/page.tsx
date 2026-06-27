@@ -7,7 +7,7 @@ import HouseIcon from "@/components/icons/houseicon";
 import PeopleIcon from "@/components/icons/peapoleicon";
 import SearchIconScan from "@/components/icons/searchiconscan";
 import React, { useState, Suspense, useRef } from "react"
-import heroimage from "@/images/propoteurbanner.png"
+import heroimage from "@/images/propoteurbanner.webp"
 
 
 

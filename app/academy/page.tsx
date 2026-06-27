@@ -10,7 +10,7 @@ import ManagerIcon from "@/components/icons/managericon";
 import MicIcon from "@/components/icons/micicon";
 import RocketIcon from "@/components/icons/rocketicon";
 import sales from '@/images/sales.svg';
-import bannerig from "@/images/academybanner.jpg"
+import bannerig from "@/images/academybanner.webp"
 
 import React, { useState, Suspense, useRef } from "react"
 import TeamIcon from "@/components/icons/teamicon";

@@ -1,11 +1,17 @@
 'use client'
 
 import Formpromomarketing from "@/components/formpromomarketing";
+import ClosingIcon from "@/components/icons/closingicon";
+import HouseIcon from "@/components/icons/houseicon";
+import SettingsIcon from "@/components/icons/settingsicon";
+import TrophyIcon from "@/components/icons/trophyicon";
+import VideoIcon from "@/components/icons/videoicon";
 import React, { useState, Suspense, useRef } from "react"
+import bannerimg from '@/images/marketingbanner.png'
 
 const solutions = [
     {
-        icon: "🎯",
+        icon: ClosingIcon({ size: 26 }),
         color: "cyan",
         title: "Génération de Leads Qualifiés",
         description:
@@ -13,16 +19,16 @@ const solutions = [
         items: ["Facebook Ads", "Instagram Ads", "Google Ads", "Landing Pages"],
     },
     {
-        icon: "🏆",
-        color: "amber",
+        icon: TrophyIcon({ size: 26 }),
+        color: "cyan",
         title: "Branding Immobilier",
         description:
             "Valoriser vos projets avec une identité forte et un positionnement mémorable.",
         items: ["Identité visuelle", "Positionnement", "Storytelling", "Image de marque"],
     },
     {
-        icon: "🎥",
-        color: "coral",
+        icon: VideoIcon({ size: 26 }),
+        color: "cyan",
         title: "Création de Contenus",
         description:
             "Des contenus qui donnent envie — visuels, vidéos et réseaux sociaux.",
@@ -34,8 +40,8 @@ const solutions = [
         ],
     },
     {
-        icon: "🏡",
-        color: "teal",
+        icon: HouseIcon({ size: 26 }),
+        color: "cyan",
         title: "Visites Virtuelles Immersives",
         description:
             "Faire visiter vos projets à distance avec une expérience immersive.",
@@ -47,8 +53,8 @@ const solutions = [
         ],
     },
     {
-        icon: "⚙️",
-        color: "purple",
+        icon: SettingsIcon({ size: 26 }),
+        color: "cyan",
         title: "CRM & Automatisation",
         description:
             "Ne perdez plus aucune opportunité grâce à un suivi automatisé et intelligent.",
@@ -112,159 +118,162 @@ const MarketingCom = () => {
     };
     return (
         <div >
-            {/* <section className="min-h-screen bg-[#07111F] px-8 lg:px-20 py-24">
-                <h2 className="text-5xl font-bold mb-10 text-cyan-400">Marketing Immobilier</h2>
-                <div className="grid lg:grid-cols-2 gap-10 text-gray-300">
-                    <div>
-                        <h3 className="text-2xl font-bold mb-4">Génération de leads</h3>
-                        <p>Campagnes Meta Ads et Google Ads pour attirer des acheteurs qualifiés.</p>
 
-                        <h3 className="text-2xl font-bold mt-8 mb-4">Visites virtuelles</h3>
-                        <p>Expériences immersives pour améliorer la conversion.</p>
-                    </div>
-                    <div>
-                        <h3 className="text-2xl font-bold mb-4">Automatisation</h3>
-                        <p>CRM, WhatsApp automation et suivi client intelligent.</p>
 
-                        <h3 className="text-2xl font-bold mt-8 mb-4">Branding immobilier</h3>
-                        <p>Création d’image premium pour vos projets immobiliers.</p>
-                    </div>
-                </div>
-                <button onClick={scrollToAudit} className="mt-10 text-cyan-400">
-                    Réserver un audit
-                </button>
-            </section> */}
+            <section className="min-h-screen bg-[#07111F]">
+                
+               
 
-            <section className="min-h-screen bg-[#07111F] px-6 sm:px-10 lg:px-20 py-24">
                 {/* ── Hero ── */}
-                <div className="max-w-3xl mb-14">
-                    <p className="text-xs font-semibold tracking-[0.15em] uppercase text-cyan-400 mb-4">
-                        Espace Marketing
-                    </p>
+                <div className="relative overflow-hidden min-h-screen flex items-center px-6 sm:px-10 lg:px-20 pt-24" data-aos="fade-up" data-aos-duration="1500">
+                     <div
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${bannerimg.src})` }}
 
-                    <h2 className="text-4xl sm:text-5xl font-bold text-white leading-[1.15] mb-4">
-                        Plus de visibilité.{" "}
-                        <span className="text-cyan-400">Plus de prospects.</span>
-                        <br className="hidden sm:block" /> Plus de ventes.
-                    </h2>
+                />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
+                {/* Ambient glow blobs (kept from original) */}
+                <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-3xl rounded-full" />
+                <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 blur-3xl rounded-full" />
 
-                    <p className="text-gray-400 text-base leading-relaxed max-w-xl">
-                        Une stratégie marketing performante ne consiste pas à être vu.
-                        Elle consiste à{" "}
-                        <span className="text-gray-200 font-medium">être choisi.</span>
-                    </p>
-                </div>
+                    {/* content */}
+                    <div className=" relative z-10 max-w-3xl">
+                        <div className="max-w-3xl mb-14">
+                            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-cyan-400 mb-4">
+                                Espace Marketing
+                            </p>
 
-                {/* ── Stats ── */}
-                <div className="grid grid-cols-3 gap-4 mb-14 max-w-xl">
-                    {stats.map((s) => (
-                        <div
-                            key={s.label}
-                            className="rounded-2xl bg-white/[0.04] border border-white/[0.07] px-4 py-5 text-center"
-                        >
-                            <p className="text-3xl font-bold text-cyan-400 mb-1">{s.value}</p>
-                            <p className="text-[11.5px] text-gray-500 leading-tight">{s.label}</p>
+                            <h2 className="text-4xl sm:text-5xl font-bold text-white leading-[1.15] mb-4">
+                                Plus de visibilité.{" "}
+                                <span className="text-cyan-400">Plus de prospects.</span>
+                                <br className="hidden sm:block" /> Plus de ventes.
+                            </h2>
+
+                            <p className="text-gray-400 text-base leading-relaxed max-w-xl">
+                                Une stratégie marketing performante ne consiste pas à être vu.
+                                Elle consiste à{" "}
+                                <span className="text-gray-200 font-medium">être choisi.</span>
+                            </p>
                         </div>
-                    ))}
-                </div>
 
-                {/* ── Divider ── */}
-                <div className="border-t border-white/5 mb-14" />
-
-                {/* ── Solutions ── */}
-                <p className="text-[11px] font-semibold tracking-[0.12em] uppercase text-gray-600 mb-6">
-                    Nos solutions marketing
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
-                    {solutions.map((s) => {
-                        const c = colorMap[s.color];
-                        return (
-                            <div
-                                key={s.title}
-                                className={`rounded-2xl border ${c.border} bg-white/[0.03] p-6 flex flex-col gap-4 hover:bg-white/[0.055] transition-colors duration-200`}
-                            >
+                        {/* ── Stats ── */}
+                        <div className="grid grid-cols-3 gap-4 mb-14 max-w-xl">
+                            {stats.map((s) => (
                                 <div
-                                    className={`w-10 h-10 rounded-xl ${c.bg} flex items-center justify-center text-lg`}
+                                    key={s.label}
+                                    className="rounded-2xl bg-white/[0.04] border border-white/[0.07] px-4 py-5 text-center"
+                                     data-aos="fade-up" data-aos-duration="1500"
                                 >
-                                    {s.icon}
+                                    <p className="text-3xl font-bold text-cyan-400 mb-1">{s.value}</p>
+                                    <p className="text-[11.5px] text-gray-500 leading-tight">{s.label}</p>
                                 </div>
-
-                                <div>
-                                    <h3 className="text-white font-semibold text-[15px] mb-1.5">
-                                        {s.title}
-                                    </h3>
-                                    <p className="text-gray-500 text-[13px] leading-relaxed">
-                                        {s.description}
-                                    </p>
-                                </div>
-
-                                <ul className="flex flex-col gap-1.5 mt-auto">
-                                    {s.items.map((item) => (
-                                        <li
-                                            key={item}
-                                            className="flex items-start gap-2 text-[12.5px] text-gray-400"
-                                        >
-                                            <span
-                                                className={`mt-[6px] w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.dot}`}
-                                            />
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        );
-                    })}
-                </div>
-
-                {/* ── Objectif banner ── */}
-                <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] px-8 py-6 mb-8 flex items-start gap-5">
-                    <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-xl flex-shrink-0 mt-0.5">
-                        🎯
-                    </div>
-                    <div>
-                        <p className="text-[11px] font-semibold tracking-[0.12em] uppercase text-gray-600 mb-2">
-                            Notre objectif
-                        </p>
-                        <p className="text-gray-300 text-[14px] leading-relaxed">
-                            Transformer votre marketing en un système capable de générer des
-                            opportunités commerciales de manière{" "}
-                            <span className="text-cyan-400 font-medium">continue</span>.
-                        </p>
+                            ))}
+                        </div>
                     </div>
                 </div>
+                <div />
 
-                {/* ── CTA Bar ── */}
-                <div className="rounded-2xl border border-teal-500/20 bg-teal-500/5 px-8 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                    <div>
-                        <h3 className="text-white font-bold text-xl mb-1">
-                            Demandez une analyse marketing gratuite
-                        </h3>
-                        <p className="text-gray-400 text-sm">
-                            Nous analysons votre projet et vous proposons un plan d'action concret.
-                        </p>
+                <div className="w-full px-6 sm:px-10 lg:px-20 py-24">
+                    {/* ── Divider ── */}
+                    <div className="border-t border-white/5 mb-14" />
+
+                    {/* ── Solutions ── */}
+                    <p className="text-[11px] font-semibold tracking-[0.12em] uppercase text-gray-600 mb-6">
+                        Nos solutions marketing
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+                        {solutions.map((s) => {
+                            const c = colorMap[s.color];
+                            return (
+                                <div
+                                    key={s.title}
+                                    className={`rounded-2xl border ${c.border} bg-white/[0.03] p-6 flex flex-col gap-4 hover:bg-white/[0.055] duration-200 hover:-translate-y-3 transition-all`}
+                                     data-aos="fade-up" data-aos-duration="1500"
+                                >
+                                    <div
+                                        className={`w-10 h-10 rounded-xl ${c.bg} flex items-center justify-center text-lg`}
+                                    >
+                                        {s.icon}
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-white font-semibold text-[15px] mb-1.5">
+                                            {s.title}
+                                        </h3>
+                                        <p className="text-gray-500 text-[13px] leading-relaxed">
+                                            {s.description}
+                                        </p>
+                                    </div>
+
+                                    <ul className="flex flex-col gap-1.5 mt-auto">
+                                        {s.items.map((item) => (
+                                            <li
+                                                key={item}
+                                                className="flex items-start gap-2 text-[12.5px] text-gray-400"
+                                            >
+                                                <span
+                                                    className={`mt-[6px] w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.dot}`}
+                                                />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            );
+                        })}
                     </div>
 
-                    <button
-                        onClick={scrollToAudit}
-                        className="flex-shrink-0 inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-400 active:scale-95 transition-all duration-150 text-white font-semibold text-sm px-6 py-3 rounded-xl"
-                    >
-                        Analyser mon projet
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-4 h-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2.5}
+                    {/* ── Objectif banner ── */}
+                    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] px-8 py-6 mb-8 flex items-start gap-5"  data-aos="zoom-in" data-aos-duration="1500">
+                        <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-xl flex-shrink-0 mt-0.5">
+                            <ClosingIcon size={26} />
+                        </div>
+                        <div>
+                            <p className="text-[11px] font-semibold tracking-[0.12em] uppercase text-gray-600 mb-2">
+                                Notre objectif
+                            </p>
+                            <p className="text-gray-300 text-[14px] leading-relaxed">
+                                Transformer votre marketing en un système capable de générer des
+                                opportunités commerciales de manière{" "}
+                                <span className="text-cyan-400 font-medium">continue</span>.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* ── CTA Bar ── */}
+                    <div className="rounded-2xl border border-teal-500/20 bg-teal-500/5 px-8 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6" data-aos="zoom-in" data-aos-duration="1500">
+                        <div>
+                            <h3 className="text-white font-bold text-xl mb-1">
+                                Demandez une analyse marketing gratuite
+                            </h3>
+                            <p className="text-gray-400 text-sm">
+                                Nous analysons votre projet et vous proposons un plan d'action concret.
+                            </p>
+                        </div>
+
+                        <button
+                            onClick={scrollToAudit}
+                            className="flex-shrink-0 inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-400 active:scale-95 transition-all duration-150 text-white font-semibold text-sm px-6 py-3 rounded-xl"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                            />
-                        </svg>
-                    </button>
+                            Analyser mon projet
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-4 h-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2.5}
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </section>
             <div ref={auditRef} className="min-h-screen w-full bg-[#0D1727] flex items-center justify-center px-4">

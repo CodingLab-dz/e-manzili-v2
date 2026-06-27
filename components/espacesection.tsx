@@ -5,7 +5,9 @@ import React, { useState, Suspense } from "react"
 const EspaceCom = () => {
     return (
         <section className="px-8 lg:px-20 py-24 bg-[#0D1727]">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16"
+                data-aos="zoom-in"
+                data-aos-duration="1500">
                 <h2 className="text-5xl font-bold mb-6">
                     Une plateforme.
                     <span className="text-cyan-400"> Deux univers.</span>
@@ -17,7 +19,7 @@ const EspaceCom = () => {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
-                <div className="bg-gradient-to-br from-cyan-500/10 to-cyan-500/5 border border-cyan-500/20 rounded-[40px] p-10 hover:-translate-y-2 transition-all duration-300">
+                <div className="bg-gradient-to-br from-cyan-500/10 to-cyan-500/5 border border-cyan-500/20 rounded-[40px] p-10 hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-duration="1500">
                     <div className="text-cyan-400 text-sm mb-4">B2B • PROMOTEURS</div>
 
                     <h3 className="text-4xl font-bold mb-6">
@@ -39,7 +41,7 @@ const EspaceCom = () => {
                     </button>
                 </div>
 
-                <div className="bg-gradient-to-br from-indigo-500/10 to-indigo-500/5 border border-indigo-500/20 rounded-[40px] p-10 hover:-translate-y-2 transition-all duration-300">
+                <div className="bg-gradient-to-br from-indigo-500/10 to-indigo-500/5 border border-indigo-500/20 rounded-[40px] p-10 hover:-translate-y-2 transition-all duration-300"  data-aos="fade-up" data-aos-duration="1500">
                     <div className="text-cyan-400 text-sm mb-4">ACADEMY • E-LEARNING</div>
 
                     <h3 className="text-4xl font-bold mb-6">

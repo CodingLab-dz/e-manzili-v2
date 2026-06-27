@@ -6,7 +6,7 @@ const MarketingCom = () => {
     return (
         <section className="px-8 lg:px-20 py-24 bg-[#0D1727]">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
-                <div>
+                <div data-aos="fade-up" data-aos-duration="1500">
                     <div className="text-cyan-400 text-sm mb-4">MARKETING IMMOBILIER</div>
 
                     <h2 className="text-5xl font-bold leading-tight mb-8">
@@ -23,7 +23,7 @@ const MarketingCom = () => {
                     </div>
                 </div>
 
-                <div className="bg-white/5 border border-white/10 rounded-[40px] p-10 backdrop-blur-xl">
+                <div className="bg-white/5 border border-white/10 rounded-[40px] p-10 backdrop-blur-xl" data-aos="fade-left" data-aos-duration="1500">
                     <div className="text-sm text-cyan-400 mb-4">EXPERIENCE CLIENT</div>
 
                     <h3 className="text-3xl font-bold mb-6">

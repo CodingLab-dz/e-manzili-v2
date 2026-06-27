@@ -1,8 +1,38 @@
 'use client'
 
-import React, { useState, Suspense } from "react"
+import React, { useState, useEffect, Suspense } from "react"
 import Link from "next/link";
 import imagebanner from '@/images/imagebanner.jpeg';
+
+
+const AnimatedStat = ({ target, suffix = "", label }: { target: number; suffix?: string; label: string }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let start = 0;
+        const duration = 2000;
+        const increment = target / (duration / 16);
+
+        const timer = setInterval(() => {
+            start += increment;
+            if (start >= target) {
+                setCount(target);
+                clearInterval(timer);
+            } else {
+                setCount(Math.floor(start));
+            }
+        }, 16);
+
+        return () => clearInterval(timer);
+    }, [target]);
+
+    return (
+        <div>
+            <div className="text-3xl lg:text-4xl font-bold text-cyan-400">+{count}{suffix}</div>
+            <div className="text-gray-400 mt-1 text-xs sm:text-sm">{label}</div>
+        </div>
+    );
+};
 
 const BannerCom = () => {
     return (

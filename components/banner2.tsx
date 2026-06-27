@@ -1,13 +1,86 @@
 'use client'
 
-import React, { Suspense } from "react"
+import React, { useEffect, useState, Suspense } from "react"
 import Link from "next/link";
 import imagebanner from '@/images/imagebanner.jpeg';
 
+const AnimatedStat = ({ target, suffix = "", label }: { target: number; suffix?: string; label: string }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let start = 0;
+        const duration = 1000;
+        const increment = target / (duration / 16);
+
+        const timer = setInterval(() => {
+            start += increment;
+            if (start >= target) {
+                setCount(target);
+                clearInterval(timer);
+            } else {
+                setCount(Math.floor(start));
+            }
+        }, 16);
+
+        return () => clearInterval(timer);
+    }, [target]);
+
+    return (
+        <div>
+            <div className="text-3xl lg:text-4xl font-bold text-cyan-400">+{count}{suffix}</div>
+            <div className="text-gray-400 mt-1 text-xs sm:text-sm">{label}</div>
+        </div>
+    );
+};
+
+const AnimatedProgressBar = ({ label, value }: { label: string; value: number }) => {
+    const [width, setWidth] = useState(0);
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setWidth(value), 300);
+        return () => clearTimeout(timer);
+    }, [value]);
+
+    useEffect(() => {
+        if (width === 0) return;
+        let start = 0;
+        const duration = 1000;
+        const increment = value / (duration / 16);
+
+        const timer = setInterval(() => {
+            start += increment;
+            if (start >= value) {
+                setCount(value);
+                clearInterval(timer);
+            } else {
+                setCount(Math.floor(start));
+            }
+        }, 16);
+
+        return () => clearInterval(timer);
+    }, [width]);
+
+    return (
+        <div>
+            <div className="flex justify-between text-sm mb-2">
+                <span className="text-gray-300">{label}</span>
+                <span className="text-cyan-400">{count}%</span>
+            </div>
+            <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                    className="bg-cyan-400 h-full rounded-full transition-all duration-1000 ease-out"
+                    style={{ width: `${width}%` }}
+                />
+            </div>
+        </div>
+    );
+};
+
 const BannerCom = () => {
     return (
-        <section className="relative px-8 lg:px-20 py-20 overflow-hidden min-h-screen flex items-center">
-            
+        <section className="relative px-8 lg:px-20 py-20 overflow-hidden min-h-screen flex items-center" data-aos="fade-up">
+
             {/* Background image */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -16,7 +89,7 @@ const BannerCom = () => {
 
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
-            
+
             {/* Optional top/bottom fades for polish */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
 
@@ -70,12 +143,10 @@ const BannerCom = () => {
 
                     <div className="grid grid-cols-3 gap-4 mt-12">
                         <div>
-                            <div className="text-3xl lg:text-4xl font-bold text-cyan-400">+35%</div>
-                            <div className="text-gray-400 mt-1 text-xs sm:text-sm">Conversion commerciale</div>
+                            <AnimatedStat target={35} suffix="%" label="Conversion commerciale" />
                         </div>
                         <div>
-                            <div className="text-3xl lg:text-4xl font-bold text-cyan-400">360°</div>
-                            <div className="text-gray-400 mt-1 text-xs sm:text-sm">Accompagnement</div>
+                            <AnimatedStat target={360} suffix="°" label="Accompagnement" />
                         </div>
                         <div>
                             <div className="text-3xl lg:text-4xl font-bold text-cyan-400">24/7</div>
@@ -105,22 +176,11 @@ const BannerCom = () => {
                                 </div>
                                 <div className="space-y-4">
                                     <div>
-                                        <div className="flex justify-between text-sm mb-2">
-                                            <span className="text-gray-300">Campagnes digitales</span>
-                                            <span className="text-cyan-400">92%</span>
-                                        </div>
-                                        <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                                            <div className="bg-cyan-400 h-full w-[92%]"></div>
-                                        </div>
+                                        <AnimatedProgressBar label="Campagnes digitales" value={92} />
                                     </div>
                                     <div>
-                                        <div className="flex justify-between text-sm mb-2">
-                                            <span className="text-gray-300">Visites virtuelles</span>
-                                            <span className="text-cyan-400">88%</span>
-                                        </div>
-                                        <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                                            <div className="bg-cyan-400 h-full w-[88%]"></div>
-                                        </div>
+                                        <AnimatedProgressBar label="Visites virtuelles" value={88} />
+
                                     </div>
                                 </div>
                             </div>

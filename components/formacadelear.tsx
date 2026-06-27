@@ -56,7 +56,7 @@ function SelectField({ label, icon, options }: {
 
 const FormCom = () => {
     return (
-        <div className="bg-[#0d1520] border border-[#1e2535] rounded-3xl p-10 max-w-xl mx-auto font-inter">
+        <div className="bg-[#0d1520] border border-[#1e2535] rounded-3xl p-10 max-w-xl mx-auto font-inter" data-aos="zoom-in" data-aos-duration="1500">
             <h2 className="font-syne text-2xl font-black text-white mb-1">Contactez-nous</h2>
             <p className="text-[#8892a4] text-sm mb-2">Notre équipe vous répondra dans les plus brefs délais.</p>
             <div className="w-10 h-0.5 bg-cyan-400 rounded mb-8" />

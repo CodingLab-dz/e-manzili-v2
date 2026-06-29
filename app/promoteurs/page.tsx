@@ -137,18 +137,28 @@ const PromoteursCom = () => {
                         style={{ backgroundImage: `url(${heroimage.src})` }}
                     /> */}
                     <Image
-        src={heroimage}
-        alt="Marketing immobilier"
-        fill
-        priority
-        quality={90}
-        className="object-cover"
-    />
+                        src={heroimage}
+                        alt="Marketing immobilier"
+                        fill
+                        priority
+                        quality={90}
+                        className="object-cover"
+                    />
                     {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
-                    {/* Ambient glow blobs (kept from original) */}
-                    <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-3xl rounded-full" />
-                    <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 blur-3xl rounded-full" />
+                    {/* Global dark overlay */}
+                    <div className="absolute inset-0 bg-[#07111F]/30" />
+
+                    {/* Bottom fade */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/60 to-transparent" />
+
+                    {/* Top fade */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
+
+                    {/* Cyan glow left */}
+                    <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full bg-cyan-500/10 blur-[160px]" />
+
+                    {/* Cyan glow right */}
+                    <div className="absolute -bottom-32 -right-32 w-[550px] h-[550px] rounded-full bg-[#07111F] blur-[160px]" />
                     {/* content */}
                     <div className="relative z-10 w-full max-w-3xl h-screen pt-75">
                         <p className="text-xs font-semibold tracking-[0.15em] uppercase text-cyan-400 mb-4 ">
@@ -193,7 +203,7 @@ const PromoteursCom = () => {
                             return (
                                 <div
                                     key={s.title}
-                                    className={`rounded-2xl border ${c.border} bg-white/[0.03] p-6 flex flex-col gap-4 hover:bg-white/[0.055] duration-200 hover:-translate-y-3 transition-all` }
+                                    className={`rounded-2xl border ${c.border} bg-white/[0.03] p-6 flex flex-col gap-4 hover:bg-white/[0.055] duration-200 hover:-translate-y-3 transition-all`}
                                     data-aos="fade-up" data-aos-duration="1500"
                                 >
                                     {/* Icon badge */}
@@ -233,7 +243,7 @@ const PromoteursCom = () => {
                     </div>
 
                     {/* ── CTA Bar ── */}
-                    <div className="rounded-2xl border border-teal-500/20 bg-teal-500/5 px-8 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"   data-aos="zoom-in" data-aos-duration="1500">
+                    <div className="rounded-2xl border border-teal-500/20 bg-teal-500/5 px-8 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6" data-aos="zoom-in" data-aos-duration="1500">
                         <div>
                             <h3 className="text-white font-bold text-xl mb-1">
                                 Réservez un audit stratégique gratuit

@@ -95,7 +95,7 @@ const formats = [
     { icon: ClassroomIcon({ size: 26 }), label: "Présentiel" },
     { icon: LaptopIcon({ size: 26 }), label: "Distanciel" },
     { icon: ManagerIcon({ size: 26 }), label: "Coaching individuel" },
-    { icon: TeamIcon({size: 36}), label: "Coaching collectif" },
+    { icon: TeamIcon({ size: 36 }), label: "Coaching collectif" },
     { icon: CompanyIcon({ size: 26 }), label: "Séminaires entreprise" },
 ];
 
@@ -147,21 +147,35 @@ const AcademyCom = () => {
         <div >
             <section className="min-h-screen bg-[#07111F] ">
                 {/* ── Hero ── */}
-                <div className="relative overflow-hidden min-h-screen flex items-center px-6 sm:px-10 lg:px-20 pt-24" data-aos="fade-up" data-aos-duration="1500">
+                <div className="relative overflow-hidden min-h-screen flex items-center px-6 sm:px-10 lg:px-20 pt-15" data-aos="fade-up" data-aos-duration="1500">
                     {/* <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                         style={{ backgroundImage: `url(${bannerig.src})` }}
                     /> */}
-                     <Image
-        src={bannerig}
-        alt="Marketing immobilier"
-        fill
-        priority
-        quality={90}
-        className="object-cover"
-    />
+                    <Image
+                        src={bannerig}
+                        alt="Marketing immobilier"
+                        fill
+                        priority
+                        quality={90}
+                        className="object-cover"
+                    />
                     {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
+                    {/* Global dark overlay */}
+                    <div className="absolute inset-0 bg-[#07111F]/30" />
+
+                    {/* Bottom fade */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/60 to-transparent" />
+
+                    {/* Top fade */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
+
+                    {/* Cyan glow left */}
+                    <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full bg-cyan-500/10 blur-[160px]" />
+
+                    {/* Cyan glow right */}
+                    <div className="absolute -bottom-32 -right-32 w-[550px] h-[550px] rounded-full bg-[#07111F] blur-[160px]" />
+
                     {/* Ambient glow blobs (kept from original) */}
                     <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-3xl rounded-full" />
                     <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 blur-3xl rounded-full" />
@@ -201,7 +215,7 @@ const AcademyCom = () => {
                     </div>
                 </div>
 
-                <div className="w-full px-6 sm:px-10 lg:px-20 py-24">
+                <div className="w-full px-6 sm:px-10 lg:px-20 pt-24">
                     {/* ── Divider ── */}
                     <div className="border-t border-white/5 mb-14" />
 
@@ -266,7 +280,7 @@ const AcademyCom = () => {
                                 <div
                                     key={f.label}
                                     className="flex items-center gap-2.5 bg-white/[0.04] border border-white/[0.07] rounded-xl px-4 py-2.5"
-                                      data-aos="zoom-in" data-aos-duration="1500"
+                                    data-aos="zoom-in" data-aos-duration="1500"
                                 >
                                     <span className="text-base">{f.icon}</span>
                                     <span className="text-gray-300 text-[13px] font-medium">
@@ -277,7 +291,7 @@ const AcademyCom = () => {
                         </div>
                     </div>
                     {/* ── CTA Bar ── */}
-                    <div className="rounded-2xl border border-teal-500/20 bg-teal-500/5 px-8 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"   data-aos="zoom-in" data-aos-duration="1500">
+                    <div className="rounded-2xl border border-teal-500/20 bg-teal-500/5 px-8 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6" data-aos="zoom-in" data-aos-duration="1500">
                         <div>
                             <h3 className="text-white font-bold text-xl mb-1">
                                 Réservez votre place pour la prochaine session

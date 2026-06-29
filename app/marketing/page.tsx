@@ -6,7 +6,7 @@ import HouseIcon from "@/components/icons/houseicon";
 import SettingsIcon from "@/components/icons/settingsicon";
 import TrophyIcon from "@/components/icons/trophyicon";
 import VideoIcon from "@/components/icons/videoicon";
-import React, { useState, Suspense, useRef } from "react"
+import React, { useState, Suspense, useRef, useEffect } from "react"
 import bannerimg from '@/images/marketingbanner.webp'
 import Image from "next/image";
 
@@ -70,10 +70,39 @@ const solutions = [
 ];
 
 const stats = [
-    { value: "3×", label: "Plus de prospects qualifiés" },
-    { value: "+60%", label: "Taux de conversion moyen" },
-    { value: "360°", label: "Couverture marketing" },
+    { value: 3, suffix: "x", label: "Plus de prospects qualifiés" },
+    { value: 60, suffix: "%", plus: "+", label: "Taux de conversion moyen" },
+    { value: 360, suffix: "°", label: "Couverture marketing" },
 ];
+
+const AnimatedStat = ({ target, suffix = "", label }: { target: number; suffix?: string; label: string }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let start = 0;
+        const duration = 1000;
+        const increment = target / (duration / 16);
+
+        const timer = setInterval(() => {
+            start += increment;
+            if (start >= target) {
+                setCount(target);
+                clearInterval(timer);
+            } else {
+                setCount(Math.floor(start));
+            }
+        }, 16);
+
+        return () => clearInterval(timer);
+    }, [target]);
+
+    return (
+        <div>
+            <div className="text-3xl lg:text-4xl font-bold text-cyan-400">+{count}{suffix}</div>
+            <div className="text-gray-400 mt-1 text-xs sm:text-sm">{label}</div>
+        </div>
+    );
+};
 
 const colorMap: Record<
     string,
@@ -123,30 +152,40 @@ const MarketingCom = () => {
 
 
             <section className="min-h-screen bg-[#07111F]">
-                
-               
+
+
 
                 {/* ── Hero ── */}
                 <div className="relative overflow-hidden min-h-screen flex items-center px-6 sm:px-10 lg:px-20 pt-24" data-aos="fade-up" data-aos-duration="1500">
-                     {/* <div
+                    {/* <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: `url(${bannerimg.src})` }}
 
                 /> */}
 
                     <Image
-        src={bannerimg}
-        alt="Marketing immobilier"
-        fill
-        priority
-        quality={90}
-        className="object-cover"
-    />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
-                {/* Ambient glow blobs (kept from original) */}
-                <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-3xl rounded-full" />
-                <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 blur-3xl rounded-full" />
+                        src={bannerimg}
+                        alt="Marketing immobilier"
+                        fill
+                        priority
+                        quality={90}
+                        className="object-cover"
+                    />
+                    {/* Gradient overlay */}
+                    {/* Global dark overlay */}
+                    <div className="absolute inset-0 bg-[#07111F]/30" />
+
+                    {/* Bottom fade */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/60 to-transparent" />
+
+                    {/* Top fade */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
+
+                    {/* Cyan glow left */}
+                    <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full bg-cyan-500/10 blur-[160px]" />
+
+                    {/* Cyan glow right */}
+                    <div className="absolute -bottom-32 -right-32 w-[550px] h-[550px] rounded-full bg-[#07111F] blur-[160px]" />
 
                     {/* content */}
                     <div className=" relative z-10 max-w-3xl">
@@ -174,10 +213,10 @@ const MarketingCom = () => {
                                 <div
                                     key={s.label}
                                     className="rounded-2xl bg-white/[0.04] border border-white/[0.07] px-4 py-5 text-center"
-                                     data-aos="fade-up" data-aos-duration="1500"
+                                    data-aos="fade-up" data-aos-duration="1500"
                                 >
-                                    <p className="text-3xl font-bold text-cyan-400 mb-1">{s.value}</p>
-                                    <p className="text-[11.5px] text-gray-500 leading-tight">{s.label}</p>
+                                    <p className="text-[11.5px] text-gray-500 leading-tight">{s?.plus}</p>
+                                    <p className="text-3xl font-bold text-cyan-400 mb-1"><AnimatedStat target={s.value} suffix={s.suffix} label={s.label} /></p>
                                 </div>
                             ))}
                         </div>
@@ -201,7 +240,7 @@ const MarketingCom = () => {
                                 <div
                                     key={s.title}
                                     className={`rounded-2xl border ${c.border} bg-white/[0.03] p-6 flex flex-col gap-4 hover:bg-white/[0.055] duration-200 hover:-translate-y-3 transition-all`}
-                                     data-aos="fade-up" data-aos-duration="1500"
+                                    data-aos="fade-up" data-aos-duration="1500"
                                 >
                                     <div
                                         className={`w-10 h-10 rounded-xl ${c.bg} flex items-center justify-center text-lg`}
@@ -237,7 +276,7 @@ const MarketingCom = () => {
                     </div>
 
                     {/* ── Objectif banner ── */}
-                    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] px-8 py-6 mb-8 flex items-start gap-5"  data-aos="zoom-in" data-aos-duration="1500">
+                    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] px-8 py-6 mb-8 flex items-start gap-5" data-aos="zoom-in" data-aos-duration="1500">
                         <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-xl flex-shrink-0 mt-0.5">
                             <ClosingIcon size={26} />
                         </div>

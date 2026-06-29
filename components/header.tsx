@@ -89,11 +89,13 @@ const HeaderCom = ({ clickref }: { clickref: () => void }) => {
                 {mobileMenuOpen && (
                     <div className="absolute top-full left-0 right-0 bg-[#07111F]/99 backdrop-blur-xl border-b border-white/10 lg:hidden">
                         <div className="flex flex-col gap-4 p-6">
-                            <Link href="#" className="text-gray-300 hover:text-white py-2">Promoteurs</Link>
-                            <Link href="#" className="text-gray-300 hover:text-white py-2">Academy</Link>
-                            <Link href="#" className="text-gray-300 hover:text-white py-2">E-learning</Link>
-                            <Link href="#" className="text-gray-300 hover:text-white py-2">Marketing</Link>
-                            <Link href="#" className="text-gray-300 hover:text-white py-2">Contact</Link>
+                            {
+                                links.map(({href, label})=>{
+                                    return (
+                                        <Link href={href} className="text-gray-300 hover:text-white py-2">{label}</Link>
+                                    );
+                                })
+                            }
                         </div>
                     </div>
                 )}

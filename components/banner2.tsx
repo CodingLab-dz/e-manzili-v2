@@ -82,20 +82,25 @@ const BannerCom = () => {
         <section className="relative px-8 lg:px-20 py-20 overflow-hidden min-h-screen flex items-center" data-aos="fade-up">
 
             {/* Background image */}
-            <div
+             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${imagebanner.src})` }}
-            />
+            /> 
 
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
+            {/* Global dark overlay */}
+            <div className="absolute inset-0 bg-[#07111F]/80" />
 
-            {/* Optional top/bottom fades for polish */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+            {/* Bottom fade */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0D1727] via-[#0D1727]/60 to-transparent" />
 
-            {/* Ambient glow blobs (kept from original) */}
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-3xl rounded-full" />
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 blur-3xl rounded-full" />
+            {/* Top fade */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
+
+            {/* Cyan glow left */}
+            <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full bg-cyan-500/10 blur-[160px]" />
+
+            {/* Cyan glow right */}
+            <div className="absolute -bottom-32 -right-32 w-[550px] h-[550px] rounded-full bg-[#0D1727] blur-[160px]" />
 
             {/* Content */}
             <div className="relative z-10 w-full flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">

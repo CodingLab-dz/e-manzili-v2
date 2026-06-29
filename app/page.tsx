@@ -14,7 +14,7 @@ import { useState } from "react";
 
 export default function EManziliConcept() {
   return (
-    <div className="min-h-screen bg-[#07111F] text-white font-sans overflow-hidden">
+    <div className="min-h-screen bg-[#0D1727] text-white font-sans overflow-hidden">
       {/* NAVBAR */}
 
       {/* HERO */}

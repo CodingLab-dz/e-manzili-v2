@@ -22,7 +22,7 @@ const categories = [
     { icon: MicIcon({ size: 26 }), label: "Communication Commerciale" },
     { icon: BrainIcon({ size: 26 }), label: "Intelligence Émotionnelle" },
     { icon: HandshakeIcon({ size: 26 }), label: "Techniques de Vente" },
-    { icon: HouseIcon({ size: 26 }), label: "Vente Immobilière" },
+    { icon: HouseIcon({ size: 26 }), label: "les base de la vente Immobilière" },
     { icon: NegociationIcon({ size: 26 }), label: "Négociation" },
     { icon: ClosingIcon({ size: 26 }), label: "Closing" },
     { icon: ManagerIcon({ size: 26 }), label: "Leadership" },
@@ -50,7 +50,7 @@ const dashboard = [
         description: "Mesurez vos acquis après chaque module de formation.",
     },
     {
-        icon: PersonalizedPathIcon({size: 26}),
+        icon: PersonalizedPathIcon({ size: 26 }),
         color: "cyan",
         title: "Parcours personnalisés",
         description: "Évoluez selon votre niveau et vos objectifs professionnels.",
@@ -108,18 +108,28 @@ const ElearningCom = () => {
                         style={{ backgroundImage: `url(${bannerimg.src})` }}
                     /> */}
                     <Image
-        src={bannerimg}
-        alt="Marketing immobilier"
-        fill
-        priority
-        quality={90}
-        className="object-cover"
-    />
+                        src={bannerimg}
+                        alt="Marketing immobilier"
+                        fill
+                        priority
+                        quality={90}
+                        className="object-cover"
+                    />
                     {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
-                    {/* Ambient glow blobs (kept from original) */}
-                    <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-3xl rounded-full" />
-                    <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 blur-3xl rounded-full" />
+                    {/* Global dark overlay */}
+                    <div className="absolute inset-0 bg-[#07111F]/30" />
+
+                    {/* Bottom fade */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/60 to-transparent" />
+
+                    {/* Top fade */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
+
+                    {/* Cyan glow left */}
+                    <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full bg-cyan-500/10 blur-[160px]" />
+
+                    {/* Cyan glow right */}
+                    <div className="absolute -bottom-32 -right-32 w-[550px] h-[550px] rounded-full bg-[#07111F] blur-[160px]" />
 
                     <div className=" relative z-10 max-w-3xl mb-16">
                         <p className="text-xs font-semibold tracking-[0.15em] uppercase text-cyan-400 mb-4">
@@ -160,7 +170,7 @@ const ElearningCom = () => {
                                         ? "bg-cyan-500/10 border-cyan-500/30 scale-[1.02]"
                                         : "bg-white/[0.03] border-white/[0.07]"
                                     }`}
-                                    data-aos="fade-up" data-aos-duration="1500"
+                                data-aos="fade-up" data-aos-duration="1500"
                             >
                                 <span className="text-base">{cat.icon}</span>
                                 <span

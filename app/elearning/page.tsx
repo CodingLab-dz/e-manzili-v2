@@ -269,7 +269,7 @@ const ElearningCom = () => {
                 </div>
             </section>
             <div ref={auditRef} className="min-h-screen w-full bg-[#0D1727] flex items-center justify-center px-4">
-                <Formacadelear />
+                <Formacadelear service="e-learning"/>
             </div>
         </div>
     );

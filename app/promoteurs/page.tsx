@@ -278,7 +278,7 @@ const PromoteursCom = () => {
                 </div>
             </section>
             <div ref={auditRef} className="audit min-h-screen w-full bg-[#0D1727] flex items-center justify-center px-4">
-                <Formpromomarketing />
+                <Formpromomarketing service="promoteur"/>
             </div>
         </div>
     );

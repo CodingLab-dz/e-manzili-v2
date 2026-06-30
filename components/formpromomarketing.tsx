@@ -153,6 +153,7 @@ const FormCom = ( { service }: { service: string } ) => {
                     icon="ti-message"
                     type="text"
                     placeholder="Décrivez votre besoin..."
+                    textarea
                     value={form.message}
                     onChange={(e) =>
                         setForm({

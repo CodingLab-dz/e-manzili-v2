@@ -1,7 +1,40 @@
 'use client'
-import React, {Suspense} from "react"
+import React, { Suspense, useState } from "react"
 
 const Contactseccomp = () => {
+  const [form, setForm] = useState({
+    service: "",
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+
+    e.preventDefault();
+
+    const response = await fetch("/api/contact", {
+
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify(form)
+
+    });
+
+    if (response.ok) {
+      alert("Message sent!");
+    } else {
+      alert("Something went wrong");
+    }
+
+  }
   return (
     <section className="relative px-8 lg:px-20 py-20 overflow-hidden">
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-cyan-500/10 blur-3xl rounded-full" />
@@ -53,50 +86,62 @@ const Contactseccomp = () => {
         </div>
 
         {/* Right — Form */}
-        <div className="bg-white/5 border border-white/10 rounded-[32px] p-6 sm:p-8 backdrop-blur-xl shadow-[0_0_80px_rgba(0,255,255,0.08)]">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="text-xs text-gray-400 mb-1 block">Nom complet</label>
-              <input type="text" placeholder="Votre nom"
-                className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/50" />
+        <form onSubmit={handleSubmit}>
+          <div className="bg-white/5 border border-white/10 rounded-[32px] p-6 sm:p-8 backdrop-blur-xl shadow-[0_0_80px_rgba(0,255,255,0.08)]">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="text-xs text-gray-400 mb-1 block">Nom complet</label>
+                <input type="text" placeholder="Votre nom"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/50" />
+              </div>
+              <div>
+                <label className="text-xs text-gray-400 mb-1 block">E-mail</label>
+                <input type="email" placeholder="votre@email.com"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/50" />
+              </div>
+              <div>
+                <label className="text-xs text-gray-400 mb-1 block">Numéro de contact</label>
+                <input type="tel" placeholder="+213 6xx xxx xxx"
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/50" />
+              </div>
+              <div>
+                <label className="text-xs text-gray-400 mb-1 block">Sujet</label>
+                <input type="text" placeholder="Audit, Formation…"
+                  value={form.service}
+                  onChange={(e) => setForm({ ...form, service: e.target.value })}
+                  className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/50" />
+              </div>
             </div>
-            <div>
-              <label className="text-xs text-gray-400 mb-1 block">E-mail</label>
-              <input type="email" placeholder="votre@email.com"
-                className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/50" />
-            </div>
-            <div>
-              <label className="text-xs text-gray-400 mb-1 block">Numéro de contact</label>
-              <input type="tel" placeholder="+213 6xx xxx xxx"
-                className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/50" />
-            </div>
-            <div>
-              <label className="text-xs text-gray-400 mb-1 block">Sujet</label>
-              <input type="text" placeholder="Audit, Formation…"
-                className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/50" />
-            </div>
-          </div>
 
-          <div className="mt-4">
-            <label className="text-xs text-gray-400 mb-1 block">Message (optionnel)</label>
-            <textarea rows={4} placeholder="Décrivez votre projet ou votre besoin…"
-              className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/50 resize-none" />
-          </div>
+            <div className="mt-4">
+              <label className="text-xs text-gray-400 mb-1 block">Message (optionnel)</label>
+              <textarea rows={4} placeholder="Décrivez votre projet ou votre besoin…"
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400/50 resize-none" />
+            </div>
 
-          <button className="mt-4 w-full bg-cyan-400 text-black font-semibold text-sm py-3 rounded-xl hover:-translate-y-0.5 transition-all">
-            SOUMETTRE
-          </button>
-        </div>
+            <button type="submit" className="mt-4 w-full bg-cyan-400 text-black font-semibold text-sm py-3 rounded-xl hover:-translate-y-0.5 transition-all">
+              SOUMETTRE
+            </button>
+          </div>
+        </form>
 
       </div>
     </section>
   )
 }
 
-export default function ContactSection(){
-    return (
-        <Suspense>
-            <Contactseccomp />
-        </Suspense>
-    )
+export default function ContactSection() {
+  return (
+    <Suspense>
+      <Contactseccomp />
+    </Suspense>
+  )
 }
